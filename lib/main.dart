@@ -3,16 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-<<<<<<< HEAD
 import 'Frontend/views/sign_screen.dart';  // Import the SignUp Screen
 import 'Frontend/client/client_page.dart';  // Import the Client Page
 import 'Frontend/owner/owner_page.dart';   // Import the Owner Page
-=======
-import 'views/sign_screen.dart';  // Import the SignUp Screen
-import 'views/client_page.dart';  // Import the Client Page
-import 'views/owner_page.dart';   // Import the Owner Page
-import 'views/login_page.dart';
->>>>>>> 44232451d703714aad00d31baed819d154424f58
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -72,18 +65,15 @@ class MyApp extends StatelessWidget {
                   } else if (role == 'owner') {
                     return OwnerPage();  // Navigate to the OwnerPage if the role is owner
                   } else {
-                    // return SignUpScreen();  // Default to SignUpScreen if no role is found
-                    return  LoginPage();
+                    return SignUpScreen();  // Default to SignUpScreen if no role is found
                   }
                 } else {
-                  // return SignUpScreen();  // If role retrieval fails, show SignUpScreen
-                    return  LoginPage();
+                  return SignUpScreen();  // If role retrieval fails, show SignUpScreen
                 }
               },
             );
           } else {
-            // return SignUpScreen();  // If no user is logged in, show SignUpScreen
-              return  LoginPage();
+            return SignUpScreen();  // If no user is logged in, show SignUpScreen
           }
         },
       ),
