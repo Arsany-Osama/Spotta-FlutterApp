@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "195865600177",
+    "project_id": "spotta-94e68",
+    "storage_bucket": "spotta-94e68.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195865600177:android:582690aa6c8408ef4f8290",
+        "android_client_info": {
+          "package_name": "com.rbma.spotta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJe6gqvJ-He_lUkDIdVCRwb2o7qvZ4jSs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

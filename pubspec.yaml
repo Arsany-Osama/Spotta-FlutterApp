@@ -1,0 +1,40 @@
+name: spotta
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core: ^3.8.0
+  firebase_auth: ^5.3.3
+  cloud_firestore: ^5.5.0
+  google_fonts: ^6.1.0
+  get: ^4.6.5
+<<<<<<< HEAD
+  flutter_map: ^6.2.1
+  latlong2: ^0.9.1
+  location: ^7.0.1
+  http: ^1.2.2
+  geolocator: ^13.0.2
+=======
+  flutter_svg: ^2.0.0
+  image_picker: ^1.1.2
+>>>>>>> 44232451d703714aad00d31baed819d154424f58
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/login_image.png
+    - assets/otp_image.png
+    - assets/welcome_image.png
+    - assets/background_image.jpg
