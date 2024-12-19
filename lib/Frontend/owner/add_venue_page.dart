@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:location/location.dart';
 import '../../Backend/controllers/venue_controller.dart';
 import 'Location_Page.dart'; // Import the LocationSelectionPage
 
