@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:spotta/Frontend/shared/chatScreen.dart';
 import 'Frontend/views/sign_screen.dart';  // Import the SignUp Screen
 import 'Frontend/client/client_page.dart';  // Import the Client Page
 import 'Frontend/owner/owner_page.dart';   // Import the Owner Page
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return 
+    GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: FutureBuilder<User?>(
         future: _firebaseAuth.currentUser != null

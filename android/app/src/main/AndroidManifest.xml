@@ -14,12 +14,12 @@
         <!-- OpenRouteService API Key -->
         <meta-data
             android:name="com.openrouteservice.API_KEY"
-            android:value="5b3ce3597851110001cf624838ed11080b9046b9aa4ab358f75d1f52" />
+            android:value="5b3ce3597851110001cf62484f055bb3ad4f4a24b925b15ab2b68750" />
 
         <!-- Google Maps API Key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="5b3ce3597851110001cf624838ed11080b9046b9aa4ab358f75d1f52" />
+            android:value="5b3ce3597851110001cf62484f055bb3ad4f4a24b925b15ab2b68750" />
 
         <activity
             android:name=".MainActivity"

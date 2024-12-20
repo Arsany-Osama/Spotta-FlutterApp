@@ -23,6 +23,7 @@ class ClientPage extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
+            Container(height: 30),
             ListTile(
               title: Text('Logout'),
               onTap: _logout,

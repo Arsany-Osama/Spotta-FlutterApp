@@ -1,8 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:spotta/Frontend/shared/chatScreen.dart';
 //import 'package:geolocator/geolocator.dart'; // For accessing client location
 import './view_location_page.dart';
 import '../../Backend/services/venue_service.dart';
+
+String clientId = FirebaseAuth.instance.currentUser?.uid ?? 'unknown';
 
 class VenueDetailsPage extends StatelessWidget {
   final String venueId;
@@ -87,7 +93,12 @@ class VenueDetailsPage extends StatelessWidget {
                 SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () {// //MARK : CLIENT Want to CHAT WITH THE OWNER BY OWNER ID HERE
-                    // Get.to(ChatPage(ownerId: venue['ownertId']));
+                    Get.to(
+                      ChatScreen(
+                        senderId: clientId,
+                        receiverId: venue['ownerId'],
+                      )
+                    );
                   },
                   child: Text('Chat with Owner'),
                 ),
