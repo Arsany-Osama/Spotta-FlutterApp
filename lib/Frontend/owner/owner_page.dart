@@ -30,6 +30,7 @@ class OwnerPage extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
+            Container(height: 30,),
             ListTile(
               title: Text('Logout'),
               onTap: _logout,
@@ -82,7 +83,8 @@ class OwnerPage extends StatelessWidget {
                               trailing: ElevatedButton(
                                 onPressed: () {
                                   // //MARK : OWNER CHAT WITH THE CLIENT BY CLIENT ID HERE
-                                   Get.to(ChatScreen(
+                                  Get.to(
+                                    ChatScreen(
                                       senderId: ownerId ,
                                       receiverId: reservation['clientId'],
                                       )
@@ -119,4 +121,3 @@ class OwnerPage extends StatelessWidget {
     );
   }
 }
-

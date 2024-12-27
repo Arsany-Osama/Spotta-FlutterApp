@@ -1,21 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class VenueService {
+  // Method to get details of an owner by ownerId
   Future<Map<String, dynamic>> getOwnerDetails(String ownerId) async {
+    // Retrieve the document of the owner using the ownerId from Firestore
     var ownerDoc = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(ownerId)
-        .get();
+        .collection('users') // Access the 'users' collection in Firestore
+        .doc(ownerId) // Access the document with the provided ownerId
+        .get(); // Fetch the document
 
-    return ownerDoc.data() ?? {};
+    // Return the data of the document if it exists
+    return ownerDoc.data() ?? {}; // Return null (an empty map) if no data found
   }
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  
+
+  // Method to get the venues of a specific owner by their ownerId
     Stream<QuerySnapshot> getOwnerVenues(String ownerId) {
     return _firestore
-        .collection('venues')
-        .where('ownerId', isEqualTo: ownerId)
-        .snapshots();
+        .collection('venues') // Access the 'venues' collection in Firestore
+        .where('ownerId', isEqualTo: ownerId) // Filter venues by ownerId
+        .snapshots(); // Return a stream of the snapshot, so it can be observed for real-time updates
   }
 
   Stream<QuerySnapshot> getReservations(String venueId) {
