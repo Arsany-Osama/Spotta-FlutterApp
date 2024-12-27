@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:spotta/Frontend/shared/chatScreen.dart';
 import '../../Backend/controllers/venue_controller.dart';
 import '../views/sign_screen.dart';
 import 'add_venue_page.dart';
@@ -81,7 +82,11 @@ class OwnerPage extends StatelessWidget {
                               trailing: ElevatedButton(
                                 onPressed: () {
                                   // //MARK : OWNER CHAT WITH THE CLIENT BY CLIENT ID HERE
-                                  // Get.to(ChatPage(clientId: reservation['clientId']));
+                                   Get.to(ChatScreen(
+                                      senderId: ownerId ,
+                                      receiverId: reservation['clientId'],
+                                      )
+                                    );
                                 },
                                 child: Text('Chat'),
                               ),
