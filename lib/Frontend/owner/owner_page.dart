@@ -6,6 +6,7 @@ import 'package:spotta/Frontend/shared/chatScreen.dart';
 import '../../Backend/controllers/venue_controller.dart';
 import '../views/sign_screen.dart';
 import 'add_venue_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class OwnerPage extends StatelessWidget {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -25,13 +26,57 @@ class OwnerPage extends StatelessWidget {
     String ownerId = _firebaseAuth.currentUser!.uid;
 
     return Scaffold(
-      appBar: AppBar(title: Text("Owner Page")),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 1,
+        title: Text(
+          "Owner Page",
+          style: GoogleFonts.lato(
+              color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+      ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            Container(height: 30,),
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 88, 39, 6),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Colors.white,
+                    child: Icon(Icons.person,
+                        size: 50, color: Color.fromARGB(255, 88, 39, 6)),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    "Owner Name",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ],
+              ),
+            ),
             ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text('Profile'),
+              onTap: () {
+                // Navigate to profile
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () {
+                // Navigate to settings
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
               title: Text('Logout'),
               onTap: _logout,
             ),
@@ -55,9 +100,20 @@ class OwnerPage extends StatelessWidget {
 
               return Card(
                 margin: EdgeInsets.all(8.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                elevation: 4,
                 child: ExpansionTile(
-                  title: Text(venue['name'] ?? 'No Name'),
-                  subtitle: Text('Price: ${venue['price']}\n${venue['description'] ?? ''}'),
+                  title: Text(venue['name'] ?? 'No Name', 
+                      style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      )),
+                  subtitle: Text(
+                    'Price: ${venue['price']}\n${venue['description'] ?? ''}',
+                    style: GoogleFonts.poppins(color: Colors.black54),
+                  ),
                   children: [
                     StreamBuilder<QuerySnapshot>(
                       stream: _venueController.fetchReservations(doc.id),
@@ -82,15 +138,20 @@ class OwnerPage extends StatelessWidget {
                               subtitle: Text('Reserved on: ${reservation['time']}'),
                               trailing: ElevatedButton(
                                 onPressed: () {
-                                  // //MARK : OWNER CHAT WITH THE CLIENT BY CLIENT ID HERE
                                   Get.to(
                                     ChatScreen(
-                                      senderId: ownerId ,
+                                      senderId: ownerId,
                                       receiverId: reservation['clientId'],
-                                      )
-                                    );
+                                    ),
+                                  );
                                 },
                                 child: Text('Chat'),
+                                style: ElevatedButton.styleFrom(
+                                  foregroundColor: Colors.white, backgroundColor: Color.fromARGB(255, 88, 39, 6),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                ),
                               ),
                             );
                           }).toList(),
@@ -103,7 +164,8 @@ class OwnerPage extends StatelessWidget {
                       leading: Icon(Icons.delete, color: Colors.red),
                       onTap: () async {
                         await _venueController.deleteVenue(doc.id);
-                        Get.snackbar('Deleted', 'Venue has been deleted.');
+                        Get.snackbar('Deleted', 'Venue has been deleted.',
+                            snackPosition: SnackPosition.BOTTOM);
                       },
                     ),
                   ],
@@ -116,7 +178,7 @@ class OwnerPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: _addVenue,
         child: Icon(Icons.add),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color.fromARGB(255, 88, 39, 6),
       ),
     );
   }
