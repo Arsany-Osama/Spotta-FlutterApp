@@ -1,11 +1,9 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 class ChatService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
-
   Future<User?> getCurrentUser() async {
     try {
       return _auth.currentUser;
@@ -13,7 +11,6 @@ class ChatService {
       throw Exception("Error getting current user: $e");
     }
   }
-
   Future<String?> fetchReceiverName(String receiverId) async {
     try {
       final receiverDoc =
@@ -26,7 +23,6 @@ class ChatService {
       throw Exception("Error fetching receiver name: $e");
     }
   }
-
   Future<void> sendMessage(
     String senderId,
     String receiverId,
@@ -48,7 +44,6 @@ class ChatService {
       throw Exception("Error sending message: $e");
     }
   }
-
   Future<String?> fetchUserRole(String senderId) async {
     try {
       final userDoc = await _fireStore.collection('users').doc(senderId).get();
@@ -60,7 +55,6 @@ class ChatService {
       throw Exception("Error fetching user role: $e");
     }
   }
-
   Future<void> logout() async {
     try {
       await _auth.signOut();

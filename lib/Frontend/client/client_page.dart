@@ -20,6 +20,30 @@ class _ClientPageState extends State<ClientPage> {
   String selectedFilter = "All";
   double minPrice = 0.0;
   double maxPrice = 1000.0;
+  String userName = "User Name"; // Default value
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserName();
+  }
+
+  void _fetchUserName() async {
+    try {
+      String userId =
+          _firebaseAuth.currentUser!.uid; // Get the current user's UID
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .get();
+
+      setState(() {
+        userName = userDoc['name'] ?? "User Name"; // Update with fetched name
+      });
+    } catch (e) {
+      print("Error fetching user name: $e");
+    }
+  }
 
   void _logout() async {
     await _firebaseAuth.signOut();
@@ -61,7 +85,7 @@ class _ClientPageState extends State<ClientPage> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    "User Name",
+                    userName,
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ],

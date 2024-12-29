@@ -52,4 +52,28 @@ class ReservationController {
       'time': DateTime.now().toIso8601String(),  // Current time
     });
   }
+
+  // Get Owner Name
+Future<String> getOwnerName() async {
+  try {
+    // Get current user ID
+    String ownerId = _firebaseAuth.currentUser!.uid;
+
+    // Fetch owner document from Firestore
+    DocumentSnapshot ownerDoc = await FirebaseFirestore.instance
+        .collection('users') // Access the "users" collection in Firestore
+        .doc(ownerId) // Locate the document corresponding to the logged-in user
+        .get();
+
+    // Cast data() to Map<String, dynamic>
+    Map<String, dynamic>? ownerData = ownerDoc.data() as Map<String, dynamic>?;
+
+    // Return the name field if it exists, otherwise return "Owner"
+    return ownerData?['name'] ?? "Owner";
+  } catch (e) {
+    print("Error fetching owner name: $e");
+    return "Error";
+  }
+}
+
 }

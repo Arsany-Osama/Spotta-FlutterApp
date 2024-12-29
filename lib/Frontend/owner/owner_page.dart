@@ -21,6 +21,23 @@ class OwnerPage extends StatelessWidget {
     Get.to(AddVenuePage());
   }
 
+  Future<String> _fetchOwnerName() async {
+    try {
+      String ownerId = _firebaseAuth.currentUser!.uid;
+
+      DocumentSnapshot ownerDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(ownerId)
+          .get();
+
+      Map<String, dynamic>? ownerData = ownerDoc.data() as Map<String, dynamic>?;
+      return ownerData?['name'] ?? "Owner";
+    } catch (e) {
+      print("Error fetching owner name: $e");
+      return "Owner";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     String ownerId = _firebaseAuth.currentUser!.uid;
@@ -40,26 +57,33 @@ class OwnerPage extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 88, 39, 6),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Colors.white,
-                    child: Icon(Icons.person,
-                        size: 50, color: Color.fromARGB(255, 88, 39, 6)),
+            FutureBuilder<String>(
+              future: _fetchOwnerName(),
+              builder: (context, snapshot) {
+                String ownerName = snapshot.data ?? "Loading...";
+
+                return DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 88, 39, 6),
                   ),
-                  SizedBox(height: 10),
-                  Text(
-                    "Owner Name",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CircleAvatar(
+                        radius: 40,
+                        backgroundColor: Colors.white,
+                        child: Icon(Icons.person,
+                            size: 50, color: Color.fromARGB(255, 88, 39, 6)),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        ownerName,
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                );
+              },
             ),
             ListTile(
               leading: Icon(Icons.account_circle),
@@ -105,7 +129,7 @@ class OwnerPage extends StatelessWidget {
                 ),
                 elevation: 4,
                 child: ExpansionTile(
-                  title: Text(venue['name'] ?? 'No Name', 
+                  title: Text(venue['name'] ?? 'No Name',
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
@@ -178,8 +202,9 @@ class OwnerPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: _addVenue,
         child: Icon(Icons.add),
-        backgroundColor: Color.fromARGB(255, 88, 39, 6),
+        backgroundColor: Colors.white,
       ),
     );
   }
 }
+

@@ -5,32 +5,25 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 class ChatController extends GetxController {
   var messageText = ''.obs;
   final messageController = TextEditingController();
-
   // Cloudinary configuration
   final String cloudName =
       'dlut09a3l'; // Replace with your Cloudinary cloud name
   final String uploadPreset =
       'flutter_uploads'; // Replace with your unsigned upload preset
-
   // Observable for receiver name
   var receiverName = ''.obs;
-
   // Initialize with sender and receiver ids
   final String senderId;
   final String receiverId;
-
   ChatController({required this.senderId, required this.receiverId});
-
   @override
   void onInit() {
     super.onInit();
     fetchReceiverName();
   }
-
   // Fetch receiver name from Firestore
   Future<void> fetchReceiverName() async {
     try {
@@ -47,7 +40,6 @@ class ChatController extends GetxController {
       Get.snackbar('Error', 'Failed to fetch receiver name');
     }
   }
-
   Future<void> pickAndUploadFile() async {
     try {
       // Open file picker
@@ -66,7 +58,6 @@ class ChatController extends GetxController {
       print(e);
     }
   }
-
   Future<String> uploadFileToCloudinary(File file) async {
     try {
       final url =
@@ -74,7 +65,6 @@ class ChatController extends GetxController {
       final request = http.MultipartRequest('POST', url)
         ..fields['upload_preset'] = uploadPreset
         ..files.add(await http.MultipartFile.fromPath('file', file.path));
-
       final response = await request.send();
       if (response.statusCode == 200) {
         final responseData = await response.stream.bytesToString();
@@ -88,7 +78,6 @@ class ChatController extends GetxController {
       throw Exception('Error uploading file to Cloudinary: $e');
     }
   }
-
   void sendMessage() async {
     if (messageText.value.trim().isNotEmpty) {
       try {
@@ -104,15 +93,12 @@ class ChatController extends GetxController {
               .contains('http'), // Set to true if it's a file URL
           'time': FieldValue.serverTimestamp(), // Set the message timestamp
         };
-
         // Send the message to Firestore
         await FirebaseFirestore.instance
             .collection('messages')
             .add(messageData);
-
         // Show success feedback
         Get.snackbar("Success", "Message sent: ${messageText.value}");
-
         // Clear the input fields
         messageController.clear();
         messageText.value = '';

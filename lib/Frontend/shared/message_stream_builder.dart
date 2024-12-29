@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 final _fireStore = FirebaseFirestore.instance;
-
 class MessageStreamBuilder extends StatelessWidget {
   final String senderId;
   final String receiverId;
   final String receiverName;
-
   const MessageStreamBuilder({
     super.key,
     required this.senderId,
     required this.receiverId,
     required this.receiverName,
   });
-
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -33,16 +29,13 @@ class MessageStreamBuilder extends StatelessWidget {
           debugPrint("Error: ${snapshot.error}");
           return const Center(child: Text("Error loading messages."));
         }
-
         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
           return const Center(child: Text("No messages yet."));
         }
-
         final messages = snapshot.data!.docs;
         List<MessageLine> messageWidgets = messages.map((message) {
           final messageText = message.get('text');
           final messageSender = message.get('sender_id');
-
           // Safely access the 'file_url' and 'file_name'
           final messageData = message.data()
               as Map<String, dynamic>?; // Cast to Map<String, dynamic>
@@ -51,7 +44,6 @@ class MessageStreamBuilder extends StatelessWidget {
           final isFile =
               messageData?['is_file'] ?? false; // Use null-aware operator
           final isMe = senderId == messageSender;
-
           return MessageLine(
             sender: isMe ? "You" : receiverName,
             text: messageText,
@@ -61,7 +53,6 @@ class MessageStreamBuilder extends StatelessWidget {
             isMe: isMe,
           );
         }).toList();
-
         return ListView(
           reverse: true,
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
@@ -71,7 +62,6 @@ class MessageStreamBuilder extends StatelessWidget {
     );
   }
 }
-
 class MessageLine extends StatelessWidget {
   final String sender;
   final String? text;
@@ -79,7 +69,6 @@ class MessageLine extends StatelessWidget {
   final String? fileName;
   final bool isFile;
   final bool isMe;
-
   const MessageLine({
     super.key,
     required this.sender,
@@ -89,7 +78,6 @@ class MessageLine extends StatelessWidget {
     required this.isFile,
     required this.isMe,
   });
-
   @override
   Widget build(BuildContext context) {
     return Padding(
