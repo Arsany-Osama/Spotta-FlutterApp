@@ -20,23 +20,29 @@ class ChatScreen extends StatelessWidget {
         Get.put(ChatController(senderId: senderId, receiverId: receiverId));
 
     return Obx(() => Scaffold(
-          appBar: AppBar(
+         appBar: AppBar(
             backgroundColor: const Color.fromARGB(255, 17, 87, 145),
             title: Row(
               children: [
                 // Scale the image based on screen size
                 Image.asset(
                   'images/spotta.png',
-                  height: MediaQuery.of(context).size.height * 0.05, // Scales image size
+                  height: MediaQuery.of(context).size.height *
+                      0.05, // Scales image size
                 ),
                 SizedBox(width: 10),
-                Text(
-                  controller.receiverName.value.isNotEmpty
-                      ? "  ${controller.receiverName.value}"
-                      : "Spotta Chat",
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w900,
+                Flexible(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      controller.receiverName.value.isNotEmpty
+                          ? "  ${controller.receiverName.value}"
+                          : "Spotta Chat",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
                   ),
                 ),
               ],
