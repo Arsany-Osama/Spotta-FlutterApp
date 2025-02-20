@@ -42,34 +42,34 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-</br>
+
 Spotta is a mobile application that allows users to book spots or venues seamlessly and communicate with hosts through an integrated chat system.
-</br></br>
 
 ### Features:
-- Sign up/in according to phone number if exists before or not:
-  ![image](https://github.com/user-attachments/assets/197e6b92-69b8-4230-9695-bd09bcf876e4)
 
-- Authenticate phone number by OTP:
-  ![image](https://github.com/user-attachments/assets/241a87f6-cbbc-4624-92b6-d4f6f5657516)
+#### 1. Sign up/in based on phone number verification  
+   ![Signup](https://github.com/user-attachments/assets/197e6b92-69b8-4230-9695-bd09bcf876e4)
 
-- Phone number signed up before as a client so it will log us to the client page:
-  ![image](https://github.com/user-attachments/assets/4c319b7c-8b88-49b3-b060-746e2ed5ae19)
+#### 2. Authenticate phone number using OTP  
+   ![OTP Authentication](https://github.com/user-attachments/assets/241a87f6-cbbc-4624-92b6-d4f6f5657516)
 
-- Details option for each venue so we can chat with owner or view loation:
-  ![image](https://github.com/user-attachments/assets/86d56d70-b75d-4f0d-b606-f645acffd944)
+#### 3. If phone number exists as a client, it redirects to the client page  
+   ![Client Dashboard](https://github.com/user-attachments/assets/4c319b7c-8b88-49b3-b060-746e2ed5ae19)
 
-- Real-time chat system with owner in real time:
-  ![image](https://github.com/user-attachments/assets/d42272df-cb38-49a1-b46f-752bc58edbd6)
+#### 4. Venue details with chat option and location view  
+   ![Venue Details](https://github.com/user-attachments/assets/86d56d70-b75d-4f0d-b606-f645acffd944)
 
-- Owner dashboard for managing reservations (With another phone number):
-  ![image](https://github.com/user-attachments/assets/a8699c02-7213-44ff-abbc-fad947eb7803)
+#### 5. Real-time chat system between clients and venue owners  
+   ![Chat Feature](https://github.com/user-attachments/assets/d42272df-cb38-49a1-b46f-752bc58edbd6)
 
-- Adding venue:
-  ![image](https://github.com/user-attachments/assets/e6d9c987-19a2-43b8-a961-bb0d3a61f854)
+#### 6. Owner dashboard to manage reservations  
+   ![Owner Dashboard](https://github.com/user-attachments/assets/a8699c02-7213-44ff-abbc-fad947eb7803)
 
--Select the location using openrouteservice.org API
-  ![image](https://github.com/user-attachments/assets/167b419c-6d72-4064-848f-a9d06a669d7a)
+#### 7. Adding a new venue  
+   ![Add Venue](https://github.com/user-attachments/assets/e6d9c987-19a2-43b8-a961-bb0d3a61f854)
+
+#### 8. Select location using Open Route Service API  
+   ![Location Selection](https://github.com/user-attachments/assets/167b419c-6d72-4064-848f-a9d06a669d7a)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -90,7 +90,7 @@ Ensure you have the following installed:
 - Dart
 - Android Studio or VS Code
 
-  [contributors-shield]: https://img.shields.io/github/contributors/Arsany-Osama/Spotta-FlutterApp.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/Arsany-Osama/Spotta-FlutterApp.svg?style=for-the-badge
 [contributors-url]: https://github.com/Arsany-Osama/Spotta-FlutterApp/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/Arsany-Osama/Spotta-FlutterApp.svg?style=for-the-badge
 [forks-url]: https://github.com/Arsany-Osama/Spotta-FlutterApp/network/members
