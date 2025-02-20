@@ -57,11 +57,10 @@ Spotta is a mobile application that allows users to book spots or venues seamles
   ![image](https://github.com/user-attachments/assets/4c319b7c-8b88-49b3-b060-746e2ed5ae19)
 
 - Details option for each venue so we can chat with owner or view loation:
-![image](https://github.com/user-attachments/assets/86d56d70-b75d-4f0d-b606-f645acffd944)
+  ![image](https://github.com/user-attachments/assets/86d56d70-b75d-4f0d-b606-f645acffd944)
 
 - Real-time chat system with owner in real time:
-![image](https://github.com/user-attachments/assets/d42272df-cb38-49a1-b46f-752bc58edbd6)
-
+  ![image](https://github.com/user-attachments/assets/d42272df-cb38-49a1-b46f-752bc58edbd6)
 
 - Owner dashboard for managing reservations (With another phone number):
   ![image](https://github.com/user-attachments/assets/a8699c02-7213-44ff-abbc-fad947eb7803)
@@ -70,7 +69,7 @@ Spotta is a mobile application that allows users to book spots or venues seamles
   ![image](https://github.com/user-attachments/assets/e6d9c987-19a2-43b8-a961-bb0d3a61f854)
 
 -Select the location using openrouteservice.org API
-![image](https://github.com/user-attachments/assets/167b419c-6d72-4064-848f-a9d06a669d7a)
+  ![image](https://github.com/user-attachments/assets/167b419c-6d72-4064-848f-a9d06a669d7a)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
